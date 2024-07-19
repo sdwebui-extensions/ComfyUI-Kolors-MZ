@@ -16,6 +16,8 @@ AUTHOR_NAME = "MinusZone"
 CATEGORY_NAME = f"{AUTHOR_NAME} - Kolors"
 folder_paths.add_model_folder_path(
     "LLM", os.path.join(folder_paths.models_dir, "LLM"))
+folder_paths.add_model_folder_path(
+    "LLM", "/stable-diffusion-cache/models/LLM")
 
 
 class MZ_ChatGLM3Loader:
