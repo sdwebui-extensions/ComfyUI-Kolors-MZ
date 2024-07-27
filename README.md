@@ -1,12 +1,17 @@
 ![image](./examples/workflow_ipa.png)
 
 ## Recent changes 
+* [2024-07-27] 新增MZ_KolorsControlNetLoader节点,用于加载可图ControlNet官方模型
+* [2024-07-26] 新增MZ_ApplySDXLSamplingSettings节点,用于V2版本重新回到SDXL的scheduler配置.
+  ![image](https://github.com/user-attachments/assets/8c3be6bf-4744-478f-8660-4842a4558a1f)
+
+* [2024-07-25] 修正sampling_settings,参数来自 [scheduler_config.json](https://huggingface.co/Kwai-Kolors/Kolors/blob/main/scheduler/scheduler_config.json),仅V2生效
+* [2024-07-21] 感谢来自yiwangsimple对Mac修复和测试的分支  https://github.com/yiwangsimple/ComfyUI-Kolors-MZ
+* [2024-07-21] 新增MZ_ChatGLM3TextEncodeAdvanceV2节点
 * [2024-07-18] IPA相关节点已在ComfyUI_IPAdapter_plus中支持
 * [2024-07-17] 新增支持IPAdapter_plus的加载器和高级应用节点 MZ_KolorsCLIPVisionLoader,MZ_IPAdapterModelLoaderKolors,MZ_IPAdapterAdvancedKolors
 * [2024-07-14] 删除自动兼容ControlNet, 新增MZ_KolorsControlNetPatch节点
   ![image](https://github.com/user-attachments/assets/73ae6447-c69d-4781-9c66-94e0029709ed)
-
-
 
 ## ComfyUI上Kolors的实现
 
@@ -15,6 +20,7 @@
 使用ComfyUI原生采样
 
 工作流在examples/workflow.png中获取
+
  
 ### UNET模型下载
 unet模型放置在 models/unet/ 文件夹下
@@ -38,7 +44,16 @@ chatglm3放置在 models/LLM/ 文件夹下
 https://huggingface.co/Kwai-Kolors/Kolors-IP-Adapter-Plus/resolve/main/ip_adapter_plus_general.bin 下载至 models/ipadapter/
 
 https://huggingface.co/Kwai-Kolors/Kolors-IP-Adapter-Plus/resolve/main/image_encoder/pytorch_model.bin 下载至 models/clip_vision/
- 
+
+### 官方ControlNet模型下载地址
+模型主页(Depth): https://huggingface.co/Kwai-Kolors/Kolors-ControlNet-Depth
+模型主页(Canny): https://huggingface.co/Kwai-Kolors/Kolors-ControlNet-Canny
+
+### Kolors-Inpainting模型下载地址
+模型主页: https://huggingface.co/Kwai-Kolors/Kolors-Inpainting
+
+https://huggingface.co/Kwai-Kolors/Kolors-Inpainting/resolve/main/unet/diffusion_pytorch_model.safetensors 下载至 models/unet/
+
 
 ## Implementation of Kolors on ComfyUI
 
@@ -75,7 +90,27 @@ https://huggingface.co/Kwai-Kolors/Kolors-IP-Adapter-Plus/resolve/main/ip_adapte
 
 https://huggingface.co/Kwai-Kolors/Kolors-IP-Adapter-Plus/resolve/main/image_encoder/pytorch_model.bin Download to models/clip_vision/
 
+### Official ControlNet model download link
+Model homepage(Depth): https://huggingface.co/Kwai-Kolors/Kolors-ControlNet-Depth
+Model homepage(Canny): https://huggingface.co/Kwai-Kolors/Kolors-ControlNet-Canny
+
+### Kolors-Inpainting model download link
+Model homepage: https://huggingface.co/Kwai-Kolors/Kolors-Inpainting
+
+https://huggingface.co/Kwai-Kolors/Kolors-Inpainting/resolve/main/unet/diffusion_pytorch_model.safetensors Download to models/unet/
+
+## 使用ComfyUI-KwaiKolorsWrapper在相同种子下测试结果 (Testing results with the same seed using ComfyUI-KwaiKolorsWrapper)
+测试工作流来自examples/workflow_same_seed_test.png 
+
+The test workflow comes from examples/workflow_same_seed_test.png
+
+![image](./examples/workflow_same_seed_test.png)
+
 ## FAQ
+
+Mac用户无法使用(Mac users cannot use)
++ Mac用户可移步至[ComfyUI-Kolors-MZ](https://github.com/yiwangsimple/ComfyUI-Kolors-MZ)  (Mac users can go to [ComfyUI-Kolors-MZ](https://github.com/yiwangsimple/ComfyUI-Kolors-MZ) )
+
 和IPAdapter有关的错误(Errors related to IPAdapter)
 + 确保ComfyUI本体和ComfyUI_IPAdapter_plus已经更新到最新版本(Make sure ComfyUI ontology and ComfyUI_IPAdapter_plus are updated to the latest version)
 
@@ -99,7 +134,6 @@ Error occurred when executing MZ_ChatGLM3Loader: 'ChatGLMModel' object has no at
 - [ComfyUI](https://github.com/comfyanonymous/ComfyUI) 
 - [ComfyUI_IPAdapter_plus](https://github.com/cubiq/ComfyUI_IPAdapter_plus)
 
-
 ## Star History
 
 <a href="https://star-history.com/#MinusZoneAI/ComfyUI-Kolors-MZ&Date">
@@ -119,8 +153,6 @@ Error occurred when executing MZ_ChatGLM3Loader: 'ChatGLMModel' object has no at
 ## Stargazers
 [![Stargazers repo roster for @MinusZoneAI/ComfyUI-Kolors-MZ](https://reporoster.com/stars/MinusZoneAI/ComfyUI-Kolors-MZ)](https://github.com/MinusZoneAI/ComfyUI-Kolors-MZ/stargazers)
 
-## 衷心感谢赞助支持
-- iuiu
 
 ## Sponsorship
 <img src="https://github.com/user-attachments/assets/a7ef9684-4911-45b6-8071-a9b433dca6af"  width="200"/>
