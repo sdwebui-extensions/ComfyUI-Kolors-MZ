@@ -154,6 +154,8 @@ def insightface_loader(provider):
         raise Exception(e)
 
     path = os.path.join(folder_paths.models_dir, "insightface")
+    if os.path.exists("/stable-diffusion-cache/models/annotator/insightface/models/antelopev2"):
+        path = "/stable-diffusion-cache/models/annotator/insightface"
     model = FaceAnalysis(name="antelopev2", root=path, providers=[provider + 'ExecutionProvider',])
     model.prepare(ctx_id=0, det_size=(640, 640))
     return model
